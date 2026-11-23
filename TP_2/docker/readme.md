@@ -16,3 +16,19 @@ Asegurate de tener **Docker Desktop** abierto y ejecutándose. Luego, abrí una 
 
 ```bash
 docker build -t lluvia-australia-mlops .
+```
+
+## 2. Ejecutar el contenedor
+
+Poner el CSV con los datos en una carpeta (por ejemplo datos/input.csv), con las mismas columnas que weatherAUS_2026C2.csv. Las columnas RainTomorrow y RainfallTomorrow no hacen falta. Desde la carpeta docker/:
+ 
+```bash
+docker run --rm -v "${PWD}/datos:/data" lluvia-australia-mlops
+```
+
+Las predicciones quedan en `datos/predicciones.csv`, con las columnas `Date`, `Location`, `Probabilidad_Lluvia` y `Prediccion_RainTomorrow`.
+
+Para usar otros nombres de archivo:
+
+```bash
+docker run --rm -v "${PWD}/datos:/data" lluvia-australia-mlops /data/mi_archivo.csv /data/salida.csv
