@@ -1,3 +1,4 @@
 .venv-pycaret/
 TP_2/datos_*.csv
 TP_2/resultados_pycaret_*.csv
+logs.log
